@@ -1,4 +1,4 @@
-/* Copyright 2022-present University of Tuebingen, Chair of Communication Networks
+/* Copyright 2026-present University of Tuebingen, Chair of Communication Networks
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

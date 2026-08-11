@@ -1,47 +1,11 @@
 [
 	{
-		"streams": [
-			{
-				"stream_id": 1,
-				"app_id": 1,
-				"frame_size": 128,
-				"encapsulation": 3,
-					"number_of_lse": 7,
-				"number_of_srv6_sids": 0,
-				"srv6_ip_tunneling": true,
-				"traffic_rate": 100,
-				"burst": 100,
-				"batches": true,
-				"vxlan": false,
-				"gtpu": false,
-				"ip_version": 4,
-				"unit": 0,
-				"pattern": null,
-				"detnet_cw": false,
-				"detnet_seq_num_length": null,
-				"mna_in_stack": true,
-				"mna_post_stack": false
-			}
-		],
 		"mode": 1,
-		"duration": 0,
 		"stream_settings": [
 			{
-				"port": 3,
+				"port": 1,
 				"channel": 0,
 				"stream_id": 1,
-				"ethernet": {
-					"eth_src": "32:D5:42:2A:F6:92",
-					"eth_dst": "81:E7:9D:E3:AD:47"
-				},
-				"ip": {
-					"ip_src": "192.168.178.10",
-					"ip_dst": "192.168.178.11",
-					"ip_tos": 0,
-					"ip_src_mask": "0.0.0.0",
-					"ip_dst_mask": "0.0.0.0"
-				},
-				"active": true,
 				"mpls_stack": [
 					{
 						"label": 100,
@@ -58,39 +22,260 @@
 						"tc": 0,
 						"ttl": 64
 					},
-						{
-							"label": 786464,
-							"tc": 2,
-							"ttl": 0
-						},
-						{
-							"label": 201,
-							"tc": 0,
-							"ttl": 64
-						},
-						{
-							"label": 202,
-							"tc": 0,
-							"ttl": 64
-						},
-						{
+					{
+						"label": 786464,
+						"tc": 2,
+						"ttl": 0
+					},
+					{
+						"label": 201,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 202,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
 						"label": 300,
 						"tc": 0,
 						"ttl": 64
 					}
-				]
+				],
+				"ethernet": {
+					"eth_src": "32:D5:42:2A:F6:92",
+					"eth_dst": "81:E7:9D:E3:AD:47"
+				},
+				"ip": {
+					"ip_src": "192.168.178.10",
+					"ip_dst": "192.168.178.11",
+					"ip_tos": 0,
+					"ip_src_mask": "0.0.0.0",
+					"ip_dst_mask": "0.0.0.0"
+				},
+				"active": true
+			},
+			{
+				"port": 2,
+				"channel": 0,
+				"stream_id": 1,
+				"mpls_stack": [
+					{
+						"label": 100,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 200,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 4,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 786464,
+						"tc": 2,
+						"ttl": 0
+					},
+					{
+						"label": 201,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 202,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 301,
+						"tc": 0,
+						"ttl": 64
+					}
+				],
+				"ethernet": {
+					"eth_src": "32:D5:42:2A:F6:92",
+					"eth_dst": "81:E7:9D:E3:AD:47"
+				},
+				"ip": {
+					"ip_src": "192.168.178.10",
+					"ip_dst": "192.168.178.11",
+					"ip_tos": 0,
+					"ip_src_mask": "0.0.0.0",
+					"ip_dst_mask": "0.0.0.0"
+				},
+				"active": true
+			},
+			{
+				"port": 3,
+				"channel": 0,
+				"stream_id": 1,
+				"mpls_stack": [
+					{
+						"label": 100,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 200,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 4,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 786464,
+						"tc": 2,
+						"ttl": 0
+					},
+					{
+						"label": 201,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 202,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 302,
+						"tc": 0,
+						"ttl": 64
+					}
+				],
+				"ethernet": {
+					"eth_src": "32:D5:42:2A:F6:92",
+					"eth_dst": "81:E7:9D:E3:AD:47"
+				},
+				"ip": {
+					"ip_src": "192.168.178.10",
+					"ip_dst": "192.168.178.11",
+					"ip_tos": 0,
+					"ip_src_mask": "0.0.0.0",
+					"ip_dst_mask": "0.0.0.0"
+				},
+				"active": true
+			},
+			{
+				"port": 4,
+				"channel": 0,
+				"stream_id": 1,
+				"mpls_stack": [
+					{
+						"label": 100,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 200,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 4,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 786464,
+						"tc": 2,
+						"ttl": 0
+					},
+					{
+						"label": 201,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 202,
+						"tc": 0,
+						"ttl": 64
+					},
+					{
+						"label": 303,
+						"tc": 0,
+						"ttl": 64
+					}
+				],
+				"ethernet": {
+					"eth_src": "32:D5:42:2A:F6:92",
+					"eth_dst": "81:E7:9D:E3:AD:47"
+				},
+				"ip": {
+					"ip_src": "192.168.178.10",
+					"ip_dst": "192.168.178.11",
+					"ip_tos": 0,
+					"ip_src_mask": "0.0.0.0",
+					"ip_dst_mask": "0.0.0.0"
+				},
+				"active": true
 			}
 		],
-		"rtt_histogram_config": {},
-		"iat_histogram_config": {},
+		"streams": [
+			{
+				"stream_id": 1,
+				"app_id": 1,
+				"frame_size": 256,
+				"encapsulation": 3,
+				"number_of_lse": 7,
+				"traffic_rate": 100,
+				"burst": 100,
+				"batches": true,
+				"n_packets": 2,
+				"timeout": 975,
+				"generation_accuracy": 99.77436,
+				"n_pipes": 4,
+				"vxlan": false,
+				"gtpu": false,
+				"ip_version": 4,
+				"number_of_srv6_sids": 0,
+				"srv6_ip_tunneling": true,
+				"unit": 0,
+				"pattern": null,
+				"detnet_cw": false,
+				"mna_post_stack": false,
+				"detnet_seq_num_length": null,
+				"mna_in_stack": false
+			}
+		],
 		"port_tx_rx_mapping": {
+			"1": {
+				"0": {
+					"port": 1,
+					"channel": 0
+				}
+			},
+			"2": {
+				"0": {
+					"port": 2,
+					"channel": 0
+				}
+			},
 			"3": {
 				"0": {
 					"port": 3,
 					"channel": 0
 				}
+			},
+			"4": {
+				"0": {
+					"port": 4,
+					"channel": 0
+				}
 			}
 		},
+		"duration": 0,
+		"repetitions": 1,
+		"rtt_histogram_config": {},
+		"iat_histogram_config": {},
 		"name": "Test 1"
 	}
 ]

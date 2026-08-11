@@ -68,7 +68,7 @@ Enable it if the ports have not been configured externally.
 ## Testbed Topology
 
 All roles are hosted on a single Intel Tofino 2.
-A second Tofino 2 runs P4TG and emulates the ingress LER and the customer node.
+A second Tofino 2 runs (v2.8.0) and emulates the ingress LER and the customer node.
 
 ```
                     device under test (one Tofino 2)
@@ -93,22 +93,22 @@ A second Tofino 2 runs P4TG and emulates the ingress LER and the customer node.
                      p.13-16  ---100G--->  P4TG
 ```
 
-| Role | Port | Speed | Type |
-| --- | --- | --- | --- |
-| P4TG streams | 13, 14, 15, 16 | 100G | cabled |
-| PLR | 4 | 400G | internal MAC-near loopback |
-| Protected egress link | 11 → 12 | 400G | cabled loopback |
-| First bypass hop | 5 | 400G | internal MAC-near loopback |
-| Second bypass hop | 6 | 400G | internal MAC-near loopback |
+| Role                  | Port           | Speed | Type                       |
+| --------------------- | -------------- | ----- | -------------------------- |
+| P4TG streams          | 13, 14, 15, 16 | 100G  | cabled                     |
+| PLR                   | 4              | 400G  | internal MAC-near loopback |
+| Protected egress link | 11 → 12        | 400G  | cabled loopback            |
+| First bypass hop      | 5              | 400G  | internal MAC-near loopback |
+| Second bypass hop     | 6              | 400G  | internal MAC-near loopback |
 
 Labels are assigned as follows:
 
-| Label | Meaning |
-| --- | --- |
-| 100 | to the PLR |
-| 200 | to the egress over the protected link |
-| 201, 202 | the two BMLs of the bypass tunnel |
-| 300-303 | delivery labels returning each stream to its P4TG port |
+| Label    | Meaning                                                |
+| -------- | ------------------------------------------------------ |
+| 100      | to the PLR                                             |
+| 200      | to the egress over the protected link                  |
+| 201, 202 | the two BMLs of the bypass tunnel                      |
+| 300-303  | delivery labels returning each stream to its P4TG port |
 
 P4TG pushes the labels for the PLR and the egress, the select-scoped `POP-N` for two BMLs, both BMLs, and a delivery label that returns the packet.
 Each re-entry through a loopback performs one label switching operation.
@@ -136,5 +136,5 @@ The mechanism and the underlying stack management operation are specified in ind
 
 This implementation builds on P4-MNA:
 
-- [F. Ihle and M. Menth: MPLS Network Actions: Technological Overview and P4-Based Implementation on a High-Speed Switching ASIC](https://ieeexplore.ieee.org/document/10947349), [erratum](https://ieeexplore.ieee.org/document/11010923), [preprint](https://atlas.cs.uni-tuebingen.de/~ihle/IhMe24.pdf), in IEEE Open Journal of the Communications Society, vol. 6, pp. 2769 - 2790, 2025, IEEE
+- [F. Ihle and M. Menth: MPLS Network Actions: Technological Overview and P4-Based Implementation on a High-Speed Switching ASIC](https://ieeexplore.ieee.org/document/10947349), [erratum](https://ieeexplore.ieee.org/document/11010923), [preprint](https://atlas.cs.uni-tuebingen.de/~ihle/IhMe24.pdf), in IEEE Open Journal of the Communications Society, vol. 6, pp. 3480 - 3501, 2025, IEEE
 - [P4-MNA repository](https://github.com/uni-tue-kn/P4-MNA)
