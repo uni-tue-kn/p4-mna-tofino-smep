@@ -83,7 +83,7 @@ parser SwitchIngressParser(
             PACKET_GEN_PORT_PIPE0: parse_pkt_gen;
             PACKET_GEN_PORT_PIPE1: parse_pkt_gen;
             PACKET_GEN_PORT_PIPE2: parse_pkt_gen;
-            PACKET_GEN_PORT_PIPE3: parse_pkt_gen;  
+            PACKET_GEN_PORT_PIPE3: parse_pkt_gen;
             default : parse_ethernet;
         }
     }
@@ -101,7 +101,7 @@ parser SwitchIngressParser(
             ether_type_t.MPLS: parse_mpls;
             default: accept;
         }
-    }    
+    }
 
     state parse_ipv4 {
         pkt.extract(hdr.ipv4);
@@ -383,7 +383,7 @@ parser SwitchIngressParser(
         //     - If HBH Scope: Stop search, extract NAS
         //     - else: Check BoS
         //          BoS Reached: accept
-        //          Not reached: Continue the search        
+        //          Not reached: Continue the search
         //  If no: Extract it as normal label and check the BoS
         //      BoS Reached: accept
         //      Not reached: Continue the search
@@ -407,7 +407,7 @@ parser SwitchIngressParser(
             MNA_Scopes.HBH: parse_nasi_second_nas;
             default: check_bos_hbh_search_0;
         }
-    }    
+    }
 
         state hbh_search_1 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
@@ -429,8 +429,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_1;
             }
-        }    
-    
+        }
+
         state hbh_search_2 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -452,8 +452,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_2;
             }
-        }           
-    
+        }
+
         state hbh_search_3 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -462,7 +462,7 @@ parser SwitchIngressParser(
             }
         }
         state check_bos_hbh_search_3 {
-            
+
             pkt.extract(hdr.mpls_inbetween_3);
             transition select (hdr.mpls_inbetween_3.bos){
                 0: hbh_search_4;
@@ -475,7 +475,7 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_3;
             }
-        }        
+        }
 
         state hbh_search_4 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
@@ -497,7 +497,7 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_4;
             }
-        }      
+        }
 
         state hbh_search_5 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
@@ -519,8 +519,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_5;
             }
-        }           
-    
+        }
+
         state hbh_search_6 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -541,8 +541,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_6;
             }
-        }            
-    
+        }
+
         state hbh_search_7 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -584,8 +584,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_8;
             }
-        }          
-    
+        }
+
         state hbh_search_9 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -606,8 +606,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_9;
             }
-        }          
-    
+        }
+
         state hbh_search_10 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -628,8 +628,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_10;
             }
-        }          
-    
+        }
+
         state hbh_search_11 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -650,8 +650,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_11;
             }
-        }          
-    
+        }
+
         state hbh_search_12 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -672,8 +672,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_12;
             }
-        }          
-    
+        }
+
         state hbh_search_13 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -694,8 +694,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_13;
             }
-        }          
-    
+        }
+
         state hbh_search_14 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -716,8 +716,8 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_14;
             }
-        }          
-    
+        }
+
         state hbh_search_15 {
             mpls_h next_mpls_label = pkt.lookahead<mpls_h>();
             transition select(next_mpls_label.label){
@@ -738,7 +738,7 @@ parser SwitchIngressParser(
                 MNA_Scopes.HBH: parse_nasi_second_nas;
                 default: check_bos_hbh_search_15;
             }
-        }                
+        }
 
     state parse_nasi_second_nas {
         pkt.extract(hdr.nasi_second_nas);
@@ -756,7 +756,7 @@ parser SwitchIngressParser(
 
     state check_nasl_second_nas {
         transition select(hdr.mna_initial_opcode_second_nas.nasl){
-            0: check_bos_second_nas;             
+            0: check_bos_second_nas;
             1: parse_nasl_second_nas_1;
             2: parse_nasl_second_nas_2;
             3: parse_nasl_second_nas_3;
@@ -864,7 +864,7 @@ parser SwitchIngressParser(
            transition select(hdr.mna_subsequent_opcodes_second_nas.last.bos) {
                 0: accept;
                 1: parse_ipv4;
-            }        
+            }
         }
         state parse_nasl_second_nas_9 {
            pkt.extract(hdr.mna_subsequent_opcodes_second_nas.next);
@@ -1011,7 +1011,7 @@ control SwitchIngressDeparser(
     apply {
 
         if (ig_dprsr_md.digest_type == 1){
-            digest_port_down.pack({hdr.port_down.port_num, 
+            digest_port_down.pack({hdr.port_down.port_num,
                                      hdr.port_down.pipe_id,
                                      ig_intr_md.ingress_mac_tstamp});
         }

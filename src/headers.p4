@@ -26,7 +26,7 @@ typedef bit<32> ipv4_addr_t;
 const PortId_t PACKET_GEN_PORT_PIPE0 = 6;
 const PortId_t PACKET_GEN_PORT_PIPE1 = 134;
 const PortId_t PACKET_GEN_PORT_PIPE2 = 262;
-const PortId_t PACKET_GEN_PORT_PIPE3 = 390;  
+const PortId_t PACKET_GEN_PORT_PIPE3 = 390;
 
 enum bit<16> ether_type_t {
     IPV4  = 0x0800,
@@ -204,9 +204,9 @@ header nasi_with_initial_opcode_h {
     bit<1> p_bit;
     bit<2> ihs;     // Scope
     bit<1> bos2;     // Bottom Of Stack
-    bit<3> res;    
+    bit<3> res;
     bit<1> unknown_action_handling;
-    bit<4> nasl;        // Network action substack length    
+    bit<4> nasl;        // Network action substack length
 }
 
 struct ingress_metadata_t {

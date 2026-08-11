@@ -20,10 +20,10 @@
 #include "mna/mna_first_nas.p4"
 #include "mna/mna_second_nas.p4"
 
-control MNA(inout header_t hdr, 
-            inout ingress_metadata_t ig_md, 
-            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md, 
-            in ingress_intrinsic_metadata_t ig_intr_md, 
+control MNA(inout header_t hdr,
+            inout ingress_metadata_t ig_md,
+            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md,
+            in ingress_intrinsic_metadata_t ig_intr_md,
             inout ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
     MNA_FIRST_NAS() mna_first_nas_c;
@@ -75,7 +75,7 @@ control MNA(inout header_t hdr,
         hdr.mna_subsequent_opcodes_second_nas[12].setInvalid();
         hdr.mna_subsequent_opcodes_second_nas[13].setInvalid();
         hdr.mna_subsequent_opcodes_second_nas[14].setInvalid();
-    }     
+    }
 
     action set_resubmit(){
         ig_dprsr_md.resubmit_type = 1;

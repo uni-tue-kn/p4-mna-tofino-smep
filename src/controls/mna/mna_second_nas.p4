@@ -17,10 +17,10 @@
  * Fabian Ihle (fabian.ihle@uni-tuebingen.de)
 */
 
-control MNA_SECOND_NAS(inout header_t hdr, 
-            inout ingress_metadata_t ig_md, 
-            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md, 
-            in ingress_intrinsic_metadata_t ig_intr_md, 
+control MNA_SECOND_NAS(inout header_t hdr,
+            inout ingress_metadata_t ig_md,
+            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md,
+            in ingress_intrinsic_metadata_t ig_intr_md,
             inout ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
    DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_initial_counter;
@@ -38,7 +38,6 @@ control MNA_SECOND_NAS(inout header_t hdr,
    DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_action_index_11_counter;
    DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_action_index_12_counter;
    DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_action_index_13_counter;
-   DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_action_index_14_counter;
 
 
    action drop(){
@@ -139,7 +138,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
       hdr.mna_subsequent_opcodes_second_nas[5].data2 = 15;
       ig_md.processed_subopcodes.index6 = 1;
       hdr.mna_subsequent_opcodes_second_nas[6].data2 = 15;
-   }    
+   }
 
    action action_0_with_0_ad(){
       debug_mna_action_index_0_counter.count();
@@ -1164,12 +1163,6 @@ control MNA_SECOND_NAS(inout header_t hdr,
        hdr.mna_subsequent_opcodes_second_nas[14].data2 = 15;
        ig_md.processed_subopcodes.index14 = 1;
    }
-   action action_14_with_0_ad(){
-       debug_mna_action_index_14_counter.count();
-       hdr.mna_subsequent_opcodes_second_nas[14].data2 = 1;
-       ig_md.processed_subopcodes.index14 = 1;
-   }
-
    table mna_initial_opcode {
       key = {
             hdr.mna_initial_opcode_second_nas.opcode: exact;
@@ -1184,33 +1177,18 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_initial_with_4_ad;
             action_initial_with_5_ad;
             action_initial_with_6_ad;
-            action_initial_with_7_ad;                    
+            action_initial_with_7_ad;
       }
       size = 128;
       counters = debug_mna_initial_counter;
    }
-
-   table mna_subsequent_opcode_14 {
-      key = {
-            hdr.mna_subsequent_opcodes_second_nas[14].opcode: exact;
-            hdr.mna_subsequent_opcodes_second_nas[14].nal: exact;
-            hdr.mna_subsequent_opcodes_second_nas[14].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[14].data2: ternary;                
-      }
-      actions = {
-            action_14_with_0_ad;
-      }
-      size = 128;
-      counters = debug_mna_action_index_14_counter;
-   }
-
 
    table mna_subsequent_opcode_13 {
       key = {
             hdr.mna_subsequent_opcodes_second_nas[13].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[13].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[13].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[13].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[13].data2: ternary;
       }
       actions = {
             action_13_with_0_ad;
@@ -1225,7 +1203,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[12].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[12].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[12].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[12].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[12].data2: ternary;
       }
       actions = {
             action_12_with_0_ad;
@@ -1234,14 +1212,14 @@ control MNA_SECOND_NAS(inout header_t hdr,
       }
       size = 128;
       counters = debug_mna_action_index_12_counter;
-   }    
+   }
 
    table mna_subsequent_opcode_11 {
       key = {
             hdr.mna_subsequent_opcodes_second_nas[11].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[11].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[11].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[11].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[11].data2: ternary;
       }
       actions = {
             action_11_with_0_ad;
@@ -1259,7 +1237,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[10].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[10].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[10].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[10].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[10].data2: ternary;
       }
       actions = {
             action_10_with_0_ad;
@@ -1277,7 +1255,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[9].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[9].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[9].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[9].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[9].data2: ternary;
       }
       actions = {
             action_9_with_0_ad;
@@ -1297,7 +1275,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[8].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[8].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[8].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[8].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[8].data2: ternary;
       }
       actions = {
             action_8_with_0_ad;
@@ -1306,7 +1284,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_8_with_3_ad;
             action_8_with_4_ad;
             action_8_with_5_ad;
-            action_8_with_6_ad;      
+            action_8_with_6_ad;
       }
       size = 128;
       counters = debug_mna_action_index_8_counter;
@@ -1318,7 +1296,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[7].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[7].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[7].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[7].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[7].data2: ternary;
       }
       actions = {
             action_7_with_0_ad;
@@ -1328,7 +1306,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_7_with_4_ad;
             action_7_with_5_ad;
             action_7_with_6_ad;
-            action_7_with_7_ad;          
+            action_7_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_7_counter;
@@ -1339,7 +1317,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[6].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[6].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[6].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[6].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[6].data2: ternary;
       }
       actions = {
             action_6_with_0_ad;
@@ -1349,7 +1327,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_6_with_4_ad;
             action_6_with_5_ad;
             action_6_with_6_ad;
-            action_6_with_7_ad;         
+            action_6_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_6_counter;
@@ -1361,7 +1339,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[5].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[5].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[5].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[5].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[5].data2: ternary;
       }
       actions = {
             action_5_with_0_ad;
@@ -1371,18 +1349,18 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_5_with_4_ad;
             action_5_with_5_ad;
             action_5_with_6_ad;
-            action_5_with_7_ad;                     
+            action_5_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_5_counter;
-   } 
+   }
 
    table mna_subsequent_opcode_4 {
       key = {
             hdr.mna_subsequent_opcodes_second_nas[4].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[4].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[4].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[4].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[4].data2: ternary;
       }
       actions = {
             action_4_with_0_ad;
@@ -1392,7 +1370,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_4_with_4_ad;
             action_4_with_5_ad;
             action_4_with_6_ad;
-            action_4_with_7_ad;                      
+            action_4_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_4_counter;
@@ -1404,7 +1382,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[3].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[3].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[3].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[3].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[3].data2: ternary;
       }
       actions = {
             action_3_with_0_ad;
@@ -1414,7 +1392,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             action_3_with_4_ad;
             action_3_with_5_ad;
             action_3_with_6_ad;
-            action_3_with_7_ad;    
+            action_3_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_3_counter;
@@ -1426,7 +1404,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes_second_nas[2].opcode: exact;
             hdr.mna_subsequent_opcodes_second_nas[2].nal: exact;
             hdr.mna_subsequent_opcodes_second_nas[2].data: ternary;
-            hdr.mna_subsequent_opcodes_second_nas[2].data2: ternary;                
+            hdr.mna_subsequent_opcodes_second_nas[2].data2: ternary;
       }
       actions = {
             action_2_with_0_ad;
@@ -1464,7 +1442,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
       counters = debug_mna_action_index_1_counter;
    }
 
-    
+
    table mna_subsequent_opcode_0 {
       key = {
             hdr.mna_subsequent_opcodes_second_nas[0].opcode: exact;
@@ -1484,7 +1462,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
       }
       size = 128;
       counters = debug_mna_action_index_0_counter;
-   }    
+   }
 
    apply {
       if (hdr.mna_initial_opcode_second_nas.isValid()){
@@ -1533,7 +1511,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             }
          }
       }
-      
+
 
       if (hdr.mna_subsequent_opcodes_second_nas[3].isValid()) {
          if (ig_md.processed_subopcodes.index3 == 0) {
@@ -1568,7 +1546,7 @@ control MNA_SECOND_NAS(inout header_t hdr,
             }
          }
       }
-         
+
 
       if (hdr.mna_subsequent_opcodes_second_nas[6].isValid()) {
          if (ig_md.processed_subopcodes.index6 == 0) {
@@ -1658,18 +1636,5 @@ control MNA_SECOND_NAS(inout header_t hdr,
             }
          }
       }
-
-      /*
-      if (hdr.mna_subsequent_opcodes_second_nas[14].isValid()) {
-         if (ig_md.processed_subopcodes.index14 == 0) {
-            if (mna_subsequent_opcode_14.apply().miss){
-               if (hdr.mna_subsequent_opcodes_second_nas[14].unknown_action_handling == 1){
-                  // Drop
-                  ig_dprsr_md.drop_ctl = 1;
-               }
-            }
-         }
-      }
-      */
    }
 }

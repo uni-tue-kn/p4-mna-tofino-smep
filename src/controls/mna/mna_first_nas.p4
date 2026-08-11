@@ -17,10 +17,10 @@
  * Fabian Ihle (fabian.ihle@uni-tuebingen.de)
 */
 
-control MNA_FIRST_NAS(inout header_t hdr, 
-            inout ingress_metadata_t ig_md, 
-            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md, 
-            in ingress_intrinsic_metadata_t ig_intr_md, 
+control MNA_FIRST_NAS(inout header_t hdr,
+            inout ingress_metadata_t ig_md,
+            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md,
+            in ingress_intrinsic_metadata_t ig_intr_md,
             inout ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
     DirectCounter<bit<32>>(CounterType_t.PACKETS) debug_mna_initial_counter;
@@ -141,7 +141,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
       hdr.mna_subsequent_opcodes[5].data2 = 15;
       ig_md.processed_subopcodes.index6 = 1;
       hdr.mna_subsequent_opcodes[6].data2 = 15;
-   }       
+   }
 
    action action_0_with_0_ad(){
       debug_mna_action_index_0_counter.count();
@@ -1191,7 +1191,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
     action pop_n_label(){
       debug_mna_initial_counter.count();
       ig_md.smep.pop_labels = hdr.mna_initial_opcode.data[7:4];
-    }    
+    }
 
 
    action drop_initial(){
@@ -1234,7 +1234,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
             hdr.mna_subsequent_opcodes[14].data2: ternary;
       }
      actions = {
-           action_14_with_0_ad;            
+           action_14_with_0_ad;
       }
       size = 128;
       counters = debug_mna_action_index_14_counter;
@@ -1249,7 +1249,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
       }
      actions = {
            action_13_with_0_ad;
-           action_13_with_1_ad;             
+           action_13_with_1_ad;
       }
       size = 128;
       counters = debug_mna_action_index_13_counter;
@@ -1265,7 +1265,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
      actions = {
            action_12_with_0_ad;
            action_12_with_1_ad;
-           action_12_with_2_ad;             
+           action_12_with_2_ad;
       }
       size = 128;
       counters = debug_mna_action_index_12_counter;
@@ -1282,7 +1282,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_11_with_0_ad;
            action_11_with_1_ad;
            action_11_with_2_ad;
-           action_11_with_3_ad;             
+           action_11_with_3_ad;
       }
       size = 128;
       counters = debug_mna_action_index_11_counter;
@@ -1300,7 +1300,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_10_with_1_ad;
            action_10_with_2_ad;
            action_10_with_3_ad;
-           action_10_with_4_ad;            
+           action_10_with_4_ad;
       }
       size = 128;
       counters = debug_mna_action_index_10_counter;
@@ -1319,7 +1319,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_9_with_2_ad;
            action_9_with_3_ad;
            action_9_with_4_ad;
-           action_9_with_5_ad;           
+           action_9_with_5_ad;
       }
       counters = debug_mna_action_index_9_counter;
       size = 128;
@@ -1339,7 +1339,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_8_with_3_ad;
            action_8_with_4_ad;
            action_8_with_5_ad;
-           action_8_with_6_ad;             
+           action_8_with_6_ad;
       }
       size = 128;
       counters = debug_mna_action_index_8_counter;
@@ -1360,7 +1360,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_7_with_4_ad;
            action_7_with_5_ad;
            action_7_with_6_ad;
-           action_7_with_7_ad;          
+           action_7_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_7_counter;
@@ -1381,7 +1381,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_6_with_4_ad;
            action_6_with_5_ad;
            action_6_with_6_ad;
-           action_6_with_7_ad;         
+           action_6_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_6_counter;
@@ -1403,7 +1403,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_5_with_4_ad;
            action_5_with_5_ad;
            action_5_with_6_ad;
-           action_5_with_7_ad;           
+           action_5_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_5_counter;
@@ -1424,7 +1424,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
            action_4_with_4_ad;
            action_4_with_5_ad;
            action_4_with_6_ad;
-           action_4_with_7_ad;          
+           action_4_with_7_ad;
       }
       size = 128;
       counters = debug_mna_action_index_4_counter;
@@ -1512,8 +1512,8 @@ control MNA_FIRST_NAS(inout header_t hdr,
       }
       size = 128;
       counters = debug_mna_action_index_0_counter;
-   }   
-        
+   }
+
     apply {
 
         if (hdr.mna_initial_opcode.isValid()){
@@ -1559,7 +1559,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
                }
             }
          }
-         
+
 
          if (hdr.mna_subsequent_opcodes[3].isValid()) {
             if (ig_md.processed_subopcodes.index3 == 0) {
@@ -1594,7 +1594,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
                }
             }
          }
-            
+
 
          if (hdr.mna_subsequent_opcodes[6].isValid()) {
             if (ig_md.processed_subopcodes.index6 == 0) {
@@ -1685,7 +1685,7 @@ control MNA_FIRST_NAS(inout header_t hdr,
                 }
             }
         }
-        
+
         if (hdr.mna_subsequent_opcodes[14].isValid()) {
             if (ig_md.processed_subopcodes.index14 == 0) {
                 if (mna_subsequent_opcode_14.apply().miss){

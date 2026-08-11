@@ -30,6 +30,6 @@ control ingress(
     MPLS() mpls_c;
 
     apply {
-        mpls_c.apply(hdr, ig_md, ig_tm_md, ig_intr_md, ig_dprsr_md);   
+        mpls_c.apply(hdr, ig_md, ig_tm_md, ig_intr_md, ig_dprsr_md);
     }
 }

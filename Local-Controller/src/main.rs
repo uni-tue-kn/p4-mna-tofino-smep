@@ -153,7 +153,6 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
     let tables: Vec<&str> = vec![
         mna::mna_controller::MPLS_LOOKUP_TABLE,
-        //"ingress.mpls_c.verify_ttl",
         "ingress.mpls_c.mpls_lookup_table",
         "ingress.mpls_c.mpls_smep_lookup_table",
         "ingress.mpls_c.mna_c.mna_first_nas_c.mna_subsequent_opcode_0",
@@ -196,7 +195,6 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
     PacketGenerator::deactivate_traffic_gen_application(&switch).await?;
 
     let mut table_entries = mna_controller.init_mpls_lookup();
-    //table_entries.extend(mna_controller.init_constant_entries());
     table_entries.extend(mna_controller.init_opcode_entries());
     table_entries.extend(mna_controller.init_pop_entries());
 

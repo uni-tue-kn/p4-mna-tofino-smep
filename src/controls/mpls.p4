@@ -19,10 +19,10 @@
 
 #include "mna.p4"
 
-control MPLS(inout header_t hdr, 
-            inout ingress_metadata_t ig_md, 
-            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md, 
-            in ingress_intrinsic_metadata_t ig_intr_md, 
+control MPLS(inout header_t hdr,
+            inout ingress_metadata_t ig_md,
+            inout ingress_intrinsic_metadata_for_tm_t ig_tm_md,
+            in ingress_intrinsic_metadata_t ig_intr_md,
             inout ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
     MNA() mna_c;
@@ -51,15 +51,10 @@ control MPLS(inout header_t hdr,
                 value = 1;
             }
     };
-    RegisterAction<bit<8>, PortId_t, void>(port_status) set_port_up = {
-            void apply(inout bit<8> value) {
-                value = 0;
-            }
-    };
 
     action nothing(){
         debug_mpls_counter.count();
-    } 
+    }
 
     action forward(PortId_t port){
         ig_tm_md.ucast_egress_port = port;
@@ -85,7 +80,7 @@ control MPLS(inout header_t hdr,
         hdr.mpls.setInvalid();
 
         debug_mpls_counter.count();
-    }    
+    }
 
     action forward_and_swap(PortId_t port, bit<20> label){
         ig_tm_md.ucast_egress_port = port;
@@ -93,7 +88,7 @@ control MPLS(inout header_t hdr,
         hdr.mpls.label = label;
 
         debug_mpls_counter.count();
-    }    
+    }
 
     table mpls_lookup_table {
         key = {
@@ -121,7 +116,7 @@ control MPLS(inout header_t hdr,
         ig_tm_md.ucast_egress_port = port;
         hdr.mpls_inbetween_0.label = label;
         debug_smep_counter.count();
-    }    
+    }
 
     action smep_forward_and_pop(PortId_t port){
         ig_tm_md.ucast_egress_port = port;
@@ -141,7 +136,7 @@ control MPLS(inout header_t hdr,
         }
         size = 1024;
         counters = debug_smep_counter;
-    }    
+    }
 
     action pop_1_label() {
         debug_pop_smep_labels_counter.count();
