@@ -35,8 +35,11 @@ control MPLS(inout header_t hdr,
     This register keeps track of the status of each port (up or down).
     The index is the dev port number. If it is set to 1, the port is down.
     If it is set to 0, the port is up.
+
+    Registers are pipe-local, so one instance exists per pipe. The port-down
+    event packet is replicated to all pipes (see the apply block below) and each
+    replica updates the instance of its own pipe, which keeps the copies in sync.
     */
-    // TODO sync register state across all pipes
     Register<bit<8>, PortId_t>(512, 0) port_status;
     RegisterAction<bit<8>, PortId_t, bit<8>>(port_status) get_port_down_status = {
             void apply(inout bit<8> value, out bit<8> read_value) {
