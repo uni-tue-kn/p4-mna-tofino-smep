@@ -95,18 +95,6 @@ impl MNAController {
         table_entries
     }
 
-    pub fn _init_constant_entries(&self) -> Vec<table::Request> {
-        let mut table_entries = vec![];
-
-        // Drop on 0 TTL
-        let tbl_request = table::Request::new("ingress.mpls_c.verify_ttl")
-            .match_key("hdr.mpls.ttl", MatchValue::exact(0))
-            .action("ingress.mpls_c.drop");
-        table_entries.push(tbl_request);
-
-        table_entries
-    }
-
     pub fn init_opcode_entries(&self) -> Vec<table::Request> {
         let mut table_entries = vec![];
 

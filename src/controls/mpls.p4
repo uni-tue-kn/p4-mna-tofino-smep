@@ -57,10 +57,6 @@ control MPLS(inout header_t hdr,
             }
     };
 
-    action drop(){
-        ig_dprsr_md.drop_ctl = 0x1;
-    }
-
     action nothing(){
         debug_mpls_counter.count();
     } 
@@ -147,20 +143,6 @@ control MPLS(inout header_t hdr,
         counters = debug_smep_counter;
     }    
 
-    table verify_ttl {
-        key = {
-            hdr.mpls.ttl: exact;
-        }
-        actions = {
-            drop;
-            NoAction;
-        }
-        default_action = NoAction;
-        size = 256;
-    }
-
-
-
     action pop_1_label() {
         debug_pop_smep_labels_counter.count();
         ig_md.popped_bos = hdr.mpls_inbetween_0.bos;
@@ -211,7 +193,6 @@ control MPLS(inout header_t hdr,
         mna_c.apply(hdr, ig_md, ig_tm_md, ig_intr_md, ig_dprsr_md);
 
         if (hdr.mpls.isValid()) {
-            //verify_ttl.apply();
             // Lookup egress port + Pop/Swap label
             mpls_lookup_table.apply();
 

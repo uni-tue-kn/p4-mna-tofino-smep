@@ -245,8 +245,6 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
         tokio::time::sleep(Duration::from_secs(3)).await;
     }
-
-    Ok(())
 }
 
 #[tokio::main]
