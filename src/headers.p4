@@ -39,7 +39,7 @@ enum bit<20> MPLS_eSPL_Types {
     ROUTER_ALERT = 0x1,
     IPv6_EXPLICIT_NULL = 0x2,
     IMPLICIT_NULL = 0x3,
-    MNA = 0x4,      // TODO change this to the IANA announced value
+    MNA = 0x4,
     ENTROPY_LABEL_INDICATOR = 0x7,
     GENERIC_ASSOCIATED_CHANNEL = 0x13,
     OAM_ALERT = 0x14,

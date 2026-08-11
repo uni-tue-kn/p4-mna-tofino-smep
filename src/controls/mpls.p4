@@ -216,7 +216,6 @@ control MPLS(inout header_t hdr,
             mpls_lookup_table.apply();
 
             ig_md.smep.egress_port_status = get_port_down_status.execute(ig_tm_md.ucast_egress_port);
-            // TODO only do this for egress nodes / PLR
             if (ig_md.smep.egress_port_status == 1) {
                 // Egress port is down :( Do egress port rewrite
                 mpls_smep_lookup_table.apply();
